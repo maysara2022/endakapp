@@ -1,0 +1,9 @@
+{
+  "installed": {
+    "client_id": "928333987956-9t4tkrdiddidssi0ph9ppofu1q2kndea.apps.googleusercontent.com",
+    "project_id": "snappy-byte-478409-v3",
+    "auth_uri": "https://accounts.google.com/o/oauth2/auth",
+    "token_uri": "https://oauth2.googleapis.com/token",
+    "auth_provider_x509_cert_url": "https://www.googleapis.com/oauth2/v1/certs"
+  }
+}
