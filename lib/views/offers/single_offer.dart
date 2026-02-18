@@ -65,12 +65,17 @@ class _SingleOfferState extends State<SingleOffer> {
 
           final myOrder = snapshot.data;
 
-          // البحث عن العرض المحدد من قائمة العروض
-          final offer = myOrder?.offers?.firstWhere(
-            (offer) => offer.id == widget.offerId,
-            orElse: () => null as OfferModel,
+          // ✅ الحل الأفضل - استخدم firstWhereOrNull من collection package
+          final offer = myOrder?.offers?.firstWhereOrNull(
+                (offer) => offer.id == widget.offerId,
           );
 
+// offer الآن OfferModel? (nullable)
+          if (offer != null) {
+            // استخدم العرض
+          } else {
+            // العرض مش موجود
+          }
           if (offer == null) {
             return Center(
               child: Column(

@@ -305,6 +305,7 @@ class RegisterScreen extends StatelessWidget {
     }else{
       _googleAuth = GoogleAuth(
         onError: (error) {
+          print("$error*************************");
           isGoogleLoading.value = false;
           Get.snackbar(
             'خطأ',

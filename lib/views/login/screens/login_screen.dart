@@ -247,8 +247,10 @@ class _LoginScreenState extends State<LoginScreen> {
     if (_googleAuth!= null) {
       return;
     }else{
+
       _googleAuth = GoogleAuth(
         onError: (error) {
+          print("$error*************************");
           isGoogleLoading.value = false;
           Get.snackbar(
             'خطأ',

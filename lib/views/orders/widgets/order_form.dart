@@ -1,4 +1,3 @@
-import 'dart:io';
 import 'package:endakapp/models/forms/form_model.dart';
 import 'package:endakapp/views/home/widgets/checkBox_widget.dart';
 import 'package:endakapp/views/home/widgets/date_widget.dart';
@@ -48,7 +47,7 @@ class _OrderFormState extends State<OrderForm> {
         controller.addListener(() {
           customFieldValues[field.nameEn] = controller.text;
         });
-        return CustomTextField(label: field.name, controller: controller);
+        return CustomTextField(label: field.nameAr, controller: controller);
 
       case 'number':
         final controller = TextEditingController(
@@ -57,7 +56,7 @@ class _OrderFormState extends State<OrderForm> {
         controller.addListener(() {
           customFieldValues[field.nameEn] = controller.text;
         });
-        return CustomTextField(label: field.name, controller: controller,keyType: TextInputType.number,);
+        return CustomTextField(label: field.nameAr, controller: controller,keyType: TextInputType.number,);
 
       case 'checkbox':
         return CheckboxWidget(
@@ -72,7 +71,7 @@ class _OrderFormState extends State<OrderForm> {
         List options = field.options ?? [];
         return CustomDropMenu(
           options: options,
-          label: field.name,
+          label: field.nameAr,
           fun: (value) {
             value = value ?? '';
             customFieldValues[field.nameEn] = value;
@@ -99,7 +98,7 @@ class _OrderFormState extends State<OrderForm> {
 
       case 'image':
         return ImagePickerWidget(
-          label: field.name,
+          label: field.nameAr,
           fieldKey: field.nameEn,
           onImageSelected: (XFile? image) {
             setState(() {

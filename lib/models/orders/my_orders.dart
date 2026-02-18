@@ -13,9 +13,6 @@ class MyOrders {
   final String? metaTitle;
   final List<OfferModel>? offers;
 
-
-
-
   MyOrders({
     this.createdAt,
     this.category,
@@ -44,7 +41,7 @@ class MyOrders {
 
       offers: json['offers'] != null
           ? (json['offers'] as List).map((e) => OfferModel.fromJson(e)).toList()
-          : [], // أو null إذا كانت nullable
+          : [],
 
       customFields: json['custom_fields'] != null
           ? Map<String, dynamic>.from(json['custom_fields'] as Map)
@@ -62,5 +59,4 @@ class MyOrders {
     }
     return value?.toString();
   }
-
 }

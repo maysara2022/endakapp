@@ -32,7 +32,7 @@ class ChatsController {
 
 
     } catch (e) {
-      throw Exception('فشل تحميل المحادثات');
+      throw Exception('فشل تحميل المحادثات$e');
     }
   }
   Future<List<Message>> fetchMessages(int partnerId) async {

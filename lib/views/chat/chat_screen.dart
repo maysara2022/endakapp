@@ -31,6 +31,7 @@ class _ChatScreenState extends State<ChatScreen> {
           if (snapshot.connectionState == ConnectionState.waiting) {
             return const Center(child: CircularProgressIndicator());
           } else if (snapshot.hasError) {
+            print(snapshot.error);
             return Center(child: ConnectionFailed(fun: () {
               _retryFetch();
             }));
@@ -44,10 +45,10 @@ class _ChatScreenState extends State<ChatScreen> {
           Map<String, ChatsData> lastMessagesMap = {};
           for (var chat in chats) {
             if (!lastMessagesMap.containsKey(chat.conversationId) ||
-                DateTime.parse(chat.createdAt)
+                DateTime.parse(chat.createdAt??'')
                     .isAfter(DateTime.parse(
-                    lastMessagesMap[chat.conversationId]!.createdAt))) {
-              lastMessagesMap[chat.conversationId] = chat;
+                    lastMessagesMap[chat.conversationId]!.createdAt??''))) {
+              lastMessagesMap[chat.conversationId.toString()] = chat;
             }
           }
 

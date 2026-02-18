@@ -2,14 +2,14 @@ import 'package:endakapp/models/user/user_model.dart';
 
 class ChatsData {
   final int id;
-  final String createdAt;
-  final String updatedAt;
+  final String? createdAt;
+  final String? updatedAt;
   final int senderId;
   final int receiverId;
   final String? message;
   final bool isRead;
   final String? readAt;
-  final bool isDeleted;
+  final bool? isDeleted;
   final String? deletedAt;
   final int? replyToMessageId;
   final String conversationId;
