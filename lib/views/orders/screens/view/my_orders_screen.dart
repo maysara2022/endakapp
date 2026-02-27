@@ -63,7 +63,7 @@ class _MyOrdersScreenState extends State<MyOrdersScreen> {
                     ),
                   ),
                   Text(
-                    'تابع خدماتك المطلوبة وتفاصيلها بسهوة واحترافية.',
+                    'تابع خدماتك المطلوبة وتفاصيلها بسهولة واحترافية.',
                     style: TextStyle(fontSize: 20, color: AppColors.whiteColor),
                   ),
                 ],
