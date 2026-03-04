@@ -1,3 +1,5 @@
+import 'dart:io';
+
 import 'package:endakapp/controllers/auth/google/google_auth.dart';
 import 'package:endakapp/controllers/auth/register/register_controller.dart';
 import 'package:endakapp/core/constants/app_colors.dart';
@@ -220,66 +222,72 @@ class RegisterScreen extends StatelessWidget {
                     ),
                   ),
                 ),
-                AppSize.box(.02, 0),
-                Row(
-                  children: [
-                    Expanded(child: Divider(color: AppColors.greyColor)),
-                    Padding(
-                      padding: const EdgeInsets.symmetric(horizontal: 10),
-                      child: Text(
-                        'أو',
-                        style: TextStyle(
-                          color: AppColors.greyColor,
-                          fontSize: 16,
-                        ),
-                      ),
-                    ),
-                    Expanded(child: Divider(color: AppColors.greyColor)),
-                  ],
-                ),
-                AppSize.box(.03, 0),
+             if(Platform.isAndroid)
+             Visibility(
+               visible: Platform.isAndroid,
+               child: Column(children: [
+                 AppSize.box(.02, 0),
+                 Row(
+                   children: [
+                     Expanded(child: Divider(color: AppColors.greyColor)),
+                     Padding(
+                       padding: const EdgeInsets.symmetric(horizontal: 10),
+                       child: Text(
+                         'أو',
+                         style: TextStyle(
+                           color: AppColors.greyColor,
+                           fontSize: 16,
+                         ),
+                       ),
+                     ),
+                     Expanded(child: Divider(color: AppColors.greyColor)),
+                   ],
+                 ),
+                 AppSize.box(.03, 0),
 
-                Obx(
-                      () => SizedBox(
-                    width: AppSize.screenWidth,
-                    child: ElevatedButton.icon(
-                      onPressed: isGoogleLoading.value
-                          ? null
-                          : () async {
-                        _initializeGoogleAuth(context);
-                        isGoogleLoading.value = true;
-                        if (_googleAuth == null) {
-                          return;
-                        }else{
-                          await _googleAuth!.signIn();
+                 Obx(
+                       () => SizedBox(
+                     width: AppSize.screenWidth,
+                     child: ElevatedButton.icon(
+                       onPressed: isGoogleLoading.value
+                           ? null
+                           : () async {
+                         _initializeGoogleAuth(context);
+                         isGoogleLoading.value = true;
+                         if (_googleAuth == null) {
+                           return;
+                         }else{
+                           await _googleAuth!.signIn();
 
-                        }
-                      },
-                      style: ButtonStyle(
-                        padding: WidgetStatePropertyAll(EdgeInsets.all(12)),
-                        backgroundColor: WidgetStateProperty.all(Colors.white),
-                      ),
-                      icon: isGoogleLoading.value
-                          ? SizedBox(
-                        width: 20,
-                        height: 20,
-                        child: CircularProgressIndicator(
-                          strokeWidth: 2,
-                          color: AppColors.primaryColor,
-                        ),
-                      )
-                          : SvgPicture.asset('assets/images/google.svg'),
-                      label: Text(
-                        'التسجيل بواسطة Google',
-                        style: TextStyle(
-                          color: AppColors.blackColor,
-                          fontSize: 16,
-                        ),
-                      ),
-                    ),
-                  ),
-                ),
-                AppSize.box(.02, 0),
+                         }
+                       },
+                       style: ButtonStyle(
+                         padding: WidgetStatePropertyAll(EdgeInsets.all(12)),
+                         backgroundColor: WidgetStateProperty.all(Colors.white),
+                       ),
+                       icon: isGoogleLoading.value
+                           ? SizedBox(
+                         width: 20,
+                         height: 20,
+                         child: CircularProgressIndicator(
+                           strokeWidth: 2,
+                           color: AppColors.primaryColor,
+                         ),
+                       )
+                           : SvgPicture.asset('assets/images/google.svg'),
+                       label: Text(
+                         'التسجيل بواسطة Google',
+                         style: TextStyle(
+                           color: AppColors.blackColor,
+                           fontSize: 16,
+                         ),
+                       ),
+                     ),
+                   ),
+                 ),
+                 AppSize.box(.02, 0),
+               ],),
+             )
               ],
             ),
           ),
@@ -292,8 +300,8 @@ class RegisterScreen extends StatelessWidget {
     if (_nameController.text.isNotEmpty &&
         _emailController.text.isNotEmpty &&
         _passwordController.text.isNotEmpty &&
-         agree.value!=false&&
-        _phoneController.text.isNotEmpty) {
+         agree.value!=false
+       ) {
       return true;
     }
     AppProcess.warring('', 'قم بالتأكد من البيانات المدخلة والموافقة الشروط والأحكام');
