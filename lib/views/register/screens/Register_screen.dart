@@ -217,7 +217,7 @@ class RegisterScreen extends StatelessWidget {
                       'تسجيل',
                       style: TextStyle(
                         color: Colors.white,
-                        fontSize: 19,
+                        fontSize: 20,
                       ),
                     ),
                   ),
